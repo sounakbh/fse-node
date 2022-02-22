@@ -16,6 +16,7 @@ import UserController from "./controllers/UserController";
 import TuitController from "./controllers/TuitController";
 import LikeController from "./controllers/LikeController";
 import BookmarkController from "./controllers/BookmarkController";
+import FollowerController from "./controllers/FollowerController";
 import mongoose from "mongoose";
 
 // build the connection string
@@ -52,6 +53,7 @@ const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likesController = LikeController.getInstance(app);
 const bookmarkController = BookmarkController.getInstance(app);
+const followerController = FollowerController.getInstance(app);
 
 /**
  * Start a server listening at port 4000 locally
