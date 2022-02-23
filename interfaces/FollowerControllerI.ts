@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export default interface BookmarkControllerI {
+export default interface FollowerControllerI {
   followUser(req: Request, res: Response): void;
   unfollowUser(req: Request, res: Response): void;
   findFolloweesOfUser(req: Request, res: Response): void;
