@@ -1,5 +1,18 @@
+/**
+ * @file Implements mongoose schema for messages
+ */
+
 import mongoose, { Schema } from "mongoose";
 import Message from "../../models/messages/Message";
+
+/**
+ * @typedef Message Represents a message sent from one user to another
+ * @property {ObjectId} sender User Id of sender
+ * @property {ObjectId} receiver User Id of receiver
+ * @property {string} messageBody The content of the message
+ * @property {Date} sentOn the time the message was sent
+ *
+ */
 
 const MessageSchema = new mongoose.Schema<Message>(
   {

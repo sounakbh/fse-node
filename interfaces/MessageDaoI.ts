@@ -1,7 +1,7 @@
 import Message from "../models/messages/Message";
 
 /**
- * @file Declares API for Follower related data access object methods
+ * @file Declares API for Message related data access object methods
  */
 export default interface BookmarkDaoI {
   createMessage(
