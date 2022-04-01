@@ -13,7 +13,6 @@ const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${
 // connect to the database
 mongoose.connect(connectionString);
 
-
 export const login = async (u: string, p: string) => {
   try {
     const user = await userDao.findUserByCredentials(u, p);
@@ -24,32 +23,37 @@ export const login = async (u: string, p: string) => {
   } catch (e) {
     return e;
   }
-}
+};
 
-export const register = async (u: string, p: string, e: string) => {
+export const signup = async (u: string, p: string, e: string) => {
   try {
     const user = await userDao.findUserByUsername(u);
     if (user) {
-      throw 'User already exists';
+      throw "User already exists";
     }
-    const newUser = await userDao.createUser({username: u, password: p, email: e});
+    const newUser = await userDao.createUser({
+      username: u,
+      password: p,
+      email: e,
+    });
     return newUser;
   } catch (e) {
     return e;
   }
-}
+};
 
 export const initializeSalaries = async (salary: number) => {
-  const users = await userDao.findAllUsers()
-  const salaryPromises = users.map(user =>
-    userDao.updateUserSalaryByUsername(user.username, salary));
+  const users = await userDao.findAllUsers();
+  const salaryPromises = users.map((user) =>
+    userDao.updateUserSalaryByUsername(user.username, salary)
+  );
   const values = await Promise.all(salaryPromises);
   return values;
-}
+};
 
-register('alice678', 'alice234', 'alice234@gmail.com')
+// signup('alice678', 'alice234', 'alice234@gmail.com')
 
-login('alice678', 'alice234')
+// login('alice678', 'alice234')
 // login('alice', 'alice123')
 
 // userDao.findAllUsers()
